@@ -70,8 +70,8 @@ class Indexer
         return [
             'id' => (int) $d->id,
             'title' => (string) $d->title,
-            'firstPostContent' => (string) ($first?->content ?? ''),
-            'lastPostContent' => (string) ($last?->content ?? ''),
+            'firstPostContent' => $this->safeContent($first),
+            'lastPostContent' => $this->safeContent($last),
             'tagIds' => $d->tags->pluck('id')->map('intval')->all(),
             'userId' => (int) $d->user_id,
             'isPrivate' => (bool) $d->is_private,
@@ -99,5 +99,14 @@ class Indexer
     protected function isCommentPost(Post $post): bool
     {
         return $post->type === 'comment';
+    }
+
+    protected function safeContent(?Post $post): string
+    {
+        if (! $post || $post->type !== 'comment') {
+            return '';
+        }
+
+        return is_string($post->content) ? $post->content : '';
     }
 }
