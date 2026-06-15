@@ -32,13 +32,17 @@ class MeilisearchClient
         return $result->getHits();
     }
 
-    public function upsert(string $index, array $documents): void
+    public function upsert(string $index, array $documents, bool $wait = true): void
     {
         if (empty($documents)) {
             return;
         }
 
-        $this->client()->index($this->indexName($index))->addDocuments($documents, 'id');
+        $task = $this->client()->index($this->indexName($index))->addDocuments($documents, 'id');
+
+        if ($wait && isset($task['taskUid'])) {
+            $this->client()->waitForTask($task['taskUid'], 300000, 200);
+        }
     }
 
     public function delete(string $index, int|string $id): void

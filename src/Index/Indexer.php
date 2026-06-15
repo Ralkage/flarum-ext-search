@@ -14,7 +14,7 @@ class Indexer
 
     public function indexDiscussion(Discussion $discussion): void
     {
-        $this->client->upsert('discussions', [$this->discussionToDocument($discussion)]);
+        $this->client->upsert('discussions', [$this->discussionToDocument($discussion)], false);
     }
 
     public function indexManyDiscussions(iterable $discussions): void
@@ -39,7 +39,7 @@ class Indexer
             return;
         }
 
-        $this->client->upsert('posts', [$this->postToDocument($post)]);
+        $this->client->upsert('posts', [$this->postToDocument($post)], false);
     }
 
     public function indexManyPosts(iterable $posts): void

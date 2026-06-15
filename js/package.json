@@ -1,7 +1,7 @@
 {
     "private": true,
     "name": "@ralkage/flarum-ext-search",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "devDependencies": {
         "flarum-webpack-config": "^2.0.0",
         "webpack": "^5.0.0",
