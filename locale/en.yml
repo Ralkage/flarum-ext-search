@@ -1,0 +1,26 @@
+flarum-ext-search:
+  admin:
+    settings:
+      connection_title: Meilisearch connection
+      host_label: Host URL
+      host_help: e.g. http://127.0.0.1:7700
+      api_key_label: API key
+      api_key_help: Master key or a search-scoped key. Leave blank if Meilisearch runs in development mode with no key.
+      index_prefix_label: Index name prefix
+      index_prefix_help: Use distinct prefixes for staging vs. production (e.g. "flarum_prod").
+      hit_limit_label: Max hits per query
+      hit_limit_help: Upper bound on results returned from Meilisearch per query. 500 is a sensible default.
+
+      status_title: Status & index
+      checking_health: Checking connection...
+      health_ok: "Connected. {discussions} discussions, {posts} posts indexed."
+      health_failed: Could not reach Meilisearch with the configured host/key.
+
+      reindex_button: Rebuild index now
+      reindex_help: Drops nothing. Re-upserts every discussion and post. Safe to run anytime, but blocks the request until complete on large forums.
+      reindex_done: "Rebuilt: {discussions} discussions, {posts} posts."
+      reindex_failed: Reindex failed. Check the connection settings and Flarum logs.
+
+  forum:
+    search:
+      no_results: No discussions matched your search.

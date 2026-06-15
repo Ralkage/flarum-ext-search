@@ -1,0 +1,47 @@
+{
+    "name": "ralkage/flarum-ext-search",
+    "description": "Meilisearch-backed full-text search for Flarum: typo tolerance, prefix matching, post-content search, highlighted snippets, queued indexing.",
+    "type": "flarum-extension",
+    "keywords": [
+        "flarum",
+        "extension",
+        "search",
+        "meilisearch",
+        "fulltext",
+        "instant-search",
+        "typo-tolerance"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ralkage",
+            "homepage": "https://github.com/Ralkage"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/Ralkage/flarum-ext-search/issues",
+        "source": "https://github.com/Ralkage/flarum-ext-search"
+    },
+    "require": {
+        "flarum/core": "^1.8",
+        "meilisearch/meilisearch-php": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "FlarumExt\\Search\\": "src/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Better Search",
+            "category": "feature",
+            "icon": {
+                "name": "fas fa-magnifying-glass",
+                "backgroundColor": "#2c3e50",
+                "color": "#fff"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
